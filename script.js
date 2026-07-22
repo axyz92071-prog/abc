@@ -184,3 +184,50 @@ themeBtn.onclick=()=>{
 // ---------------- Start ----------------
 
 renderTasks();
+.calendar{
+margin-top:40px;
+}
+
+.calendar-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.calendar-header button{
+padding:10px 15px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.weekdays,
+#calendarDays{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:10px;
+}
+
+.weekdays span{
+text-align:center;
+font-weight:bold;
+}
+
+.day{
+padding:15px;
+background:rgba(255,255,255,.15);
+border-radius:10px;
+text-align:center;
+cursor:pointer;
+transition:.3s;
+}
+
+.day:hover{
+transform:scale(1.05);
+}
+
+.today{
+background:#1abc9c;
+font-weight:bold;
+}
