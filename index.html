@@ -1,28 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Daily Planner</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Planner</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
 </head>
 <body>
 
 <div class="container">
 
-<h1>📅 My Daily Planner</h1>
+<header>
 
-<p id="date"></p>
+<h1>📅 My Planner</h1>
 
-<input type="text" id="taskInput" placeholder="What will I do today?">
+<button id="themeBtn">
+<i class="fa-solid fa-moon"></i>
+</button>
 
-<input type="time" id="alarmTime">
+</header>
 
-<button onclick="addTask()">Add Task</button>
+<p id="today"></p>
 
-<button onclick="toggleDark()">🌙 Dark Mode</button>
+<div class="task-box">
 
-<ul id="taskList"></ul>
+<input
+type="text"
+placeholder="Enter today's task..."
+id="taskInput">
+
+<input type="time" id="taskTime">
+
+<select id="priority">
+
+<option>High</option>
+<option>Medium</option>
+<option>Low</option>
+
+</select>
+
+<button id="addTask">
+Add
+</button>
+
+</div>
+
+<input
+type="text"
+placeholder="Search Tasks..."
+id="search">
+
+<div class="progress">
+
+<div class="progress-bar"></div>
+
+</div>
+
+<p id="progressText">
+
+0% Completed
+
+</p>
+
+<ul id="taskList">
+
+<!-- Tasks -->
+
+</ul>
+
+<div class="calendar">
+
+<h2>Calendar</h2>
+
+<div class="calendar-box">
+
+Coming in Part 3 📅
+
+</div>
+
+</div>
 
 </div>
 
