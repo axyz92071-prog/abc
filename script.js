@@ -1,76 +1,247 @@
-const taskList = document.getElementById("taskList");
-
-document.getElementById("date").innerHTML =
-new Date().toDateString();
-
-loadTasks();
-
-function addTask(){
-
-let task = document.getElementById("taskInput").value;
-let time = document.getElementById("alarmTime").value;
-
-if(task==""){
-alert("Enter a task");
-return;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
 }
 
-let li = document.createElement("li");
+body{
 
-li.innerHTML=`
-<span onclick="this.classList.toggle('completed')">
-${task}<br><small>⏰ ${time}</small>
-</span>
+background:linear-gradient(135deg,#4facfe,#00f2fe);
 
-<button onclick="removeTask(this)">❌</button>
-`;
+min-height:100vh;
 
-taskList.appendChild(li);
+display:flex;
 
-saveTasks();
+justify-content:center;
 
-setAlarm(task,time);
+align-items:center;
 
-document.getElementById("taskInput").value="";
-document.getElementById("alarmTime").value="";
+padding:30px;
+
 }
 
-function removeTask(btn){
-btn.parentElement.remove();
-saveTasks();
+.container{
+
+width:100%;
+
+max-width:850px;
+
+background:rgba(255,255,255,.15);
+
+backdrop-filter:blur(15px);
+
+border-radius:20px;
+
+padding:30px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+
+color:white;
+
 }
 
-function saveTasks(){
-localStorage.setItem("tasks",taskList.innerHTML);
+header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:20px;
+
 }
 
-function loadTasks(){
-taskList.innerHTML=localStorage.getItem("tasks") || "";
+header h1{
+
+font-size:34px;
+
 }
 
-function toggleDark(){
-document.body.classList.toggle("dark");
+#themeBtn{
+
+border:none;
+
+background:white;
+
+color:#333;
+
+padding:12px;
+
+border-radius:50%;
+
+cursor:pointer;
+
+font-size:20px;
+
 }
 
-function setAlarm(task,time){
+#today{
 
-if(time=="") return;
+margin-bottom:20px;
 
-let now=new Date();
+font-size:18px;
 
-let alarm=new Date();
-
-let t=time.split(":");
-
-alarm.setHours(t[0]);
-alarm.setMinutes(t[1]);
-alarm.setSeconds(0);
-
-let diff=alarm-now;
-
-if(diff>0){
-setTimeout(()=>{
-alert("⏰ Reminder: "+task);
-},diff);
 }
+
+.task-box{
+
+display:grid;
+
+grid-template-columns:2fr 1fr 1fr auto;
+
+gap:10px;
+
+margin-bottom:20px;
+
+}
+
+.task-box input,
+.task-box select{
+
+padding:12px;
+
+border:none;
+
+border-radius:10px;
+
+outline:none;
+
+}
+
+.task-box button{
+
+background:#1abc9c;
+
+color:white;
+
+border:none;
+
+padding:12px 20px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+}
+
+.task-box button:hover{
+
+background:#16a085;
+
+}
+
+#search{
+
+width:100%;
+
+padding:12px;
+
+border:none;
+
+border-radius:10px;
+
+margin-bottom:20px;
+
+outline:none;
+
+}
+
+.progress{
+
+height:18px;
+
+background:rgba(255,255,255,.2);
+
+border-radius:20px;
+
+overflow:hidden;
+
+margin-bottom:10px;
+
+}
+
+.progress-bar{
+
+height:100%;
+
+width:0%;
+
+background:#2ecc71;
+
+transition:.5s;
+
+}
+
+#progressText{
+
+margin-bottom:25px;
+
+}
+
+#taskList{
+
+list-style:none;
+
+}
+
+.task{
+
+background:rgba(255,255,255,.2);
+
+padding:15px;
+
+border-radius:12px;
+
+margin-bottom:10px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.calendar{
+
+margin-top:40px;
+
+}
+
+.calendar h2{
+
+margin-bottom:15px;
+
+}
+
+.calendar-box{
+
+background:rgba(255,255,255,.2);
+
+padding:50px;
+
+border-radius:15px;
+
+text-align:center;
+
+font-size:22px;
+
+}
+
+@media(max-width:700px){
+
+.task-box{
+
+grid-template-columns:1fr;
+
+}
+
+header h1{
+
+font-size:28px;
+
+}
+
 }
